@@ -49,7 +49,7 @@ public class CubeProperties : MonoBehaviour
     /// <summary>
     /// To be called on right click to destroy a block if !invincible
     /// </summary>
-    void DestroyBlock()
+    public void DestroyBlock()
     {
         if (cubeType != EnumCubeType.Invincible)
         {

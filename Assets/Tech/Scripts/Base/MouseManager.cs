@@ -7,12 +7,13 @@ public class MouseManager : MonoBehaviour {
     [SerializeField]
     GameObject cubeBuild;
 
+    CameraMovement camMov;
     Ray ray;
     RaycastHit hit;
 	// Use this for initialization
 	void Start ()
     {
-		
+        camMov = gameObject.GetComponent<CameraMovement>();
 	}
 	
 	// Update is called once per frame
@@ -24,8 +25,10 @@ public class MouseManager : MonoBehaviour {
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("RB Down");
+            DestroyBlock();
         }
+
+        camMov.ZoomCamera(Input.GetAxis("Scroll"));
     }
 
 
@@ -65,6 +68,16 @@ public class MouseManager : MonoBehaviour {
             Vector3 locationToBuild = _cubePropertiesScript.GetLocationToBuildBlock(hit);
             Instantiate(cubeBuild, locationToBuild, new Quaternion(0, 0, 0, 0));
             Debug.Log("Check For Cube Done");   
+        }
+    }
+
+    void DestroyBlock()
+    {
+        if (CheckForCube())
+        {
+            Collider _collider = GetHitCollider();
+            CubeProperties _cubeProperties = _collider.GetComponent<CubeProperties>();
+            _cubeProperties.DestroyBlock();
         }
     }
 }
