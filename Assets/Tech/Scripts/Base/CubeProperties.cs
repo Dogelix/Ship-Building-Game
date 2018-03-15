@@ -1,62 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Scripts.Other;
 
 public class CubeProperties : MonoBehaviour
 {
     [SerializeField]
-    bool invinceable = false;
-    [SerializeField]
-    bool engine = false;
-    [SerializeField]
-    bool fuelTank = false;
-    [SerializeField]
-    bool generator = false;
-    [SerializeField]
-    bool battery = false;
+    EnumCubeType cubeType = EnumCubeType.NormalBlock;
+    
 
     private void Start()
     {
-        if (engine)
-        {
-
-        }
-        if (fuelTank)
-        {
-
-        }
-        if (generator)
-        {
-
-        }
-        if (battery)
-        {
-
-        }
     }
     
-    public string GetBlockType()
+    public EnumCubeType GetBlockType()
     {
-        if (engine)
-        {
-            return "engine";
-        }
-        if (fuelTank)
-        {
-            return "fuelTank";
-        }
-        if (generator)
-        {
-            return "generator";
-        }
-        if (battery)
-        {
-            return "battery";
-        }
-        else
-        {
-            return "NULL";
-        }
+        return cubeType;
     }
 
     /// <summary>
@@ -70,17 +29,17 @@ public class CubeProperties : MonoBehaviour
         Vector3 _incomingVec = _rayHit.normal - Vector3.up;
 
         if (_incomingVec == new Vector3(0, -1, -1))
-            return Vector3.back;
+            return gameObject.transform.position + Vector3.back;
         if (_incomingVec == new Vector3(0, -1, 1))
-            return Vector3.forward;
+            return gameObject.transform.position + Vector3.forward;
         if (_incomingVec == new Vector3(0, 0, 0))
-            return Vector3.up;
+            return gameObject.transform.position + Vector3.up;
         if (_incomingVec == new Vector3(1, 1, 1))
-            return Vector3.down;
+            return gameObject.transform.position + Vector3.down;
         if (_incomingVec == new Vector3(-1, -1, 0))
-            return Vector3.left;
+            return gameObject.transform.position + Vector3.left;
         if (_incomingVec == new Vector3(1, -1, 0))
-            return Vector3.right;
+            return gameObject.transform.position + Vector3.right;
 
         return new Vector3(0, 0, 0);
     }
@@ -92,9 +51,9 @@ public class CubeProperties : MonoBehaviour
     /// </summary>
     void DestroyBlock()
     {
-        if (!invinceable)
+        if (cubeType != EnumCubeType.Invincible)
         {
-            //Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
