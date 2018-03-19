@@ -5,11 +5,12 @@ using UnityEngine;
 public class MouseManager : MonoBehaviour {
 
     [SerializeField]
-    GameObject cubeBuild;
+    private GameObject cubeBuild;
 
-    CameraMovement camMov;
-    Ray ray;
-    RaycastHit hit;
+    private CameraMovement camMov;
+    private Ray ray;
+    private RaycastHit hit;
+
 	// Use this for initialization
 	void Start ()
     {

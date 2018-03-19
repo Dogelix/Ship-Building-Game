@@ -129,6 +129,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c005b54bb2cf075439ede024d0aca5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraFocusPoint: {x: 0, y: 0, z: 0}
+  speedMultiplier: 10000
+--- !u!114 &264288301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 264288297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b5502126f1587448f5eb85513df61b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &370592037
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +224,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4992309961707090, guid: f1f38b4e1bc099347a93c31f7f9e6926, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -13.87
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4992309961707090, guid: f1f38b4e1bc099347a93c31f7f9e6926, type: 2}
       propertyPath: m_LocalRotation.x

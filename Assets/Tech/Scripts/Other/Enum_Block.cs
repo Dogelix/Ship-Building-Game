@@ -13,4 +13,15 @@ namespace Scripts.Other
         Generator,
         Battery
     }
+
+    public enum EnumDirection
+    {
+        Front,
+        Back,
+        Left,
+        Right,
+        Top,
+        Bottom,
+        NULL
+    }
 }

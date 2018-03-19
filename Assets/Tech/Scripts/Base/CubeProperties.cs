@@ -44,6 +44,31 @@ public class CubeProperties : MonoBehaviour
         return new Vector3(0, 0, 0);
     }
 
+    /// <summary>
+    /// This takes in the ray cast to see where the click is coming from, then calculate on which face
+    /// to add 1 unit to that direction to give a location to return a EnumDirection.
+    /// </summary>
+    /// <param name="_rayHit">The raycast hit used to find the block to begin with</param>
+    /// <returns>This returns a EnumDirection in relation to the clicked block</returns>
+    public virtual EnumDirection GetLocationOfHit(RaycastHit _rayHit)
+    {
+        Vector3 _incomingVec = _rayHit.normal - Vector3.up;
+
+        if (_incomingVec == new Vector3(0, -1, -1))
+            return EnumDirection.Back;
+        if (_incomingVec == new Vector3(0, -1, 1))
+            return EnumDirection.Front;
+        if (_incomingVec == new Vector3(0, 0, 0))
+            return EnumDirection.Top;
+        if (_incomingVec == new Vector3(1, 1, 1))
+            return EnumDirection.Bottom;
+        if (_incomingVec == new Vector3(-1, -1, 0))
+            return EnumDirection.Left;
+        if (_incomingVec == new Vector3(1, -1, 0))
+            return EnumDirection.Right;
+
+        return EnumDirection.NULL;
+    }
 
 
     /// <summary>
